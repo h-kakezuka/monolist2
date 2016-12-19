@@ -13,6 +13,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @have_users = @item.have_users.order(created_at: :desc)
+    @want_users = @item.want_users.order(created_at: :desc)
   end
 
   private
