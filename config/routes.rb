@@ -6,16 +6,6 @@ Rails.application.routes.draw do
 
   get 'ranking/want'
 
-  get 'admin_users/index'
-
-  get 'admin_users/ranking'
-
-  get 'admin_users/show'
-
-  get 'admin_users/have'
-
-  get 'admin_users/want'
-
   root 'welcome#index'
 
   get    'signup', to: 'users#new'
