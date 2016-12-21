@@ -3,12 +3,16 @@ class RankingController < ApplicationController
   end
 
   def have
-    @ranking =
-    Ownership.where(type:"Have").group(:item_id).order('count_item_id desc').limit(10).count('item_id').keys
+    @title = 'Haveランキング'
+    ranking = Have.group(:item_id).order('count_item_id desc').limit(10).count('item_id').keys
+    @items = Item.find(ranking).sort_by{|o| ranking.index(o.id)}
+    render 'show'
   end
 
   def want
-    @ranking =
-    Ownership.where(type:"Want").group(:item_id).order('count_item_id desc').limit(10).count('item_id').keys
+    @title = 'Wantランキング'
+    ranking = Want.group(:item_id).order('count_item_id desc').limit(10).count('item_id').keys
+    @items = Item.find(ranking).sort_by{|o| ranking.index(o.id)}
+    render 'show'
   end
 end
